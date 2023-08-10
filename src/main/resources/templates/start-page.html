@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>ToDo-App</title>
-
-  <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css"
-        rel="stylesheet"/>
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/start-page.css}" rel="stylesheet" type="text/css">
 </head>
 
-<body style="background: #2a1255; padding-top: 10px; padding-left: 50px; padding-right: 10px";>
-
-<table>
-  <thead >
-  <th style="column-width: 100px"><a href="/profile">Profile</a></th>
-  <th style="column-width: 100px"><a href="/tasks">Tasks</a></th>
-  </thead>
-</table>
+<body>
+<div class="container">
+  <th><a href="/profile">Profile</a></th>
+  <br>
+  <br>
+  <th><a href="/tasks">Tasks</a></th>
+</div>
 </body>
 </html>

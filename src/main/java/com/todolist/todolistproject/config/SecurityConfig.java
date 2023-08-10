@@ -16,13 +16,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final UserDetailService userDetailService;
     private final JWTFilter jwtFilter;
 
 
     @Autowired
-    public SecurityConfig(UserDetailService userDetailService, JWTFilter jwtFilter) {
-        this.userDetailService = userDetailService;
+    public SecurityConfig(JWTFilter jwtFilter) {
         this.jwtFilter = jwtFilter;
     }
 
@@ -31,6 +29,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .requestMatchers("/auth/login", "/auth/registration", "/error", "/").permitAll()
+                .requestMatchers("/*.css", "/*/*.css").permitAll()
                 .anyRequest().hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin().loginPage("/auth/login")
