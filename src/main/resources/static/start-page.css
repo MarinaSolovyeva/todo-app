@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2a1255;
+}
+
+.container {
+    background-color: #6b40ab;
+    text-align: center;
+    padding: 100px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    font-size: 60px;
+}
+
+a {
+    color: #dcd9e1;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+

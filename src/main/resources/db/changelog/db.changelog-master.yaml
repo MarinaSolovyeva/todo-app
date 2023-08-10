@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: Marina
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: VARCHAR(45)
+              - column:
+                  name: password
+                  type: VARCHAR(150)
+              - column:
+                  name: e-mail
+                  type: VARCHAR(45)
+              - column:
+                  name: role
+                  type: VARCHAR(45)
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title_task
+                  type: VARCHAR(45)
+              - column:
+                  name: status_task
+                  type: TINYINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            foreignKeyConstraints:
+              - baseColumnNames: user_id
+                baseTableName: tasks
+                referencedColumnNames: id
+                referencedTableName: users
+                name: tasks_users_id_fk
