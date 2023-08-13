@@ -1,39 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Профиль</title>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+    <title>Profile</title>
+    <link th:href="@{/user-pages/profile.css}" rel="stylesheet" type="text/css">
 </head>
-<body style="background: #2a1255; padding-top: 10px; padding-left: 50px; padding-right: 10px" ;>
-<div class="container">
-    <h2 style="color: ghostwhite"> Профиль пользователя</h2>
-    <form th:action="@{/update-user}" th:object="${user}" method="POST">
-        <table class="table table-border table-striped" id="user-table" style="width: 700px">
-            <input type="hidden" th:field="*{id}"/>
-            <tr>
-                <th style="color: ghostwhite">Изменить имя</th>
-                <th><input type="text" th:field="*{username}" placeholder="Username"
-                           class="form-control col-4 mb-4"/></th>
-            </tr>
-            <tr>
-                <th style="color: ghostwhite">E-mail</th>
-                <th><input type="text" th:field="*{email}" placeholder="E-mail" class="form-control col-4 mb-4"/>
-                </th>
-            </tr>
-            <br>
-        </table>
-        <button class="btn btn-light" type="submit">Обновить</button>
-    </form>
 
-    <a th:href="@{/logout}" style="position: fixed; left:300px; bottom: 70px; color: ghostwhite">Выйти из ЛК</a>
-    <a th:href="@{/}" style="position: fixed; left:300px; bottom: 40px; color: ghostwhite">Вернуться</a>
+<body>
+<div class="container">
+    <h2> Профиль пользователя</h2>
+    <form th:action="@{/update-user}" th:object="${user}" method="POST">
+        <label for="username">Изменить имя:</label>
+        <input type="text" id="username" name="username">
+        <label for="e-mail">Изменить e-mail:</label>
+        <input type="e-mail" id="e-mail" name="e-mail">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="btn-container">
+            <button type="submit" class="btn">Обновить</button>
+        </div>
+    </form>
+    <br>
 
 </div>
+
+<div class="link-container">
+    <a th:href="@{/logout}" class="link">Выйти из ЛК</a>
+    <a th:href="@{/}" class="link_back">Вернуться</a>
+</div>
 </body>
+
 </html>
 
 

@@ -48,3 +48,25 @@ databaseChangeLog:
                 referencedColumnNames: id
                 referencedTableName: users
                 name: tasks_users_id_fk
+  - changeSet:
+      id: 002
+      author: Marina
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: username
+                  value: user
+              - column:
+                  name: password
+                  value: $2a$12$huvqqysJbg3gguzbsSHjxeF0QSaWNH9zlHDBH/xapK1tmZvZVbv42
+              - column:
+                  name: e-mail
+                  value: user@mail.com
+              - column:
+                  name: role
+                  value: ROLE_USER

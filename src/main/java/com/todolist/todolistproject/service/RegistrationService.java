@@ -22,9 +22,6 @@ public class RegistrationService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    /**
-     * register() before saving User to DB, method set encode password to User and set Role by default "USER"
-     */
     @Transactional
     public void register(UserDto userDto) {
         if (!Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())) {

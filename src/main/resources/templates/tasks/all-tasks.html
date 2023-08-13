@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <title>Tasks</title>
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css"
-          rel="stylesheet"/>
+          rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/tasks/all-tasks.css}" rel="stylesheet" type="text/css">
 </head>
 
-<body style="background: rgba(47,20,96,0.51); padding-top: 10px; padding-left: 150px; padding-right: 10px" ;>
+<body>
+<h1> My Tasks </h1>>
 <div class="container">
-    <table class="table table-border table-striped" id="tasks-table" style="width: 500px">
-        <thead class="table-dark">
-        <tr>
-            <td style="width: 500px; font-size: x-large; padding-left: 300px">ToDos</td>
-            <td style="width: 300px"></td>
-        </tr>
+    <table class="table-task">
+        <thead class="table-head">
         <tr>
             <form th:action="@{/save-task}" th:object="${task}" method="POST">
-                <td><input type="text" th:field="*{title}" placeholder="Enter todo here" class="form-control-sm-200"
-                           style="width: 500px">
-                <td>
-                    <button class="btn btn-light" type="submit">Submit</button>
-                </td>
+                <td class="column_1"> <input type="text" th:field="*{title}" placeholder="Enter todo here"
+                                            class="input-field"> </td>
+                <td class="column_2"> <button type="submit" class="btn-light"> Save </button> </td>
             </form>
         </tr>
         </thead>
@@ -37,19 +34,18 @@
                 <input type="checkbox" th:checked="${task.completed}" th:attr="data-task-id=${task.id}"
                        onchange="changeStatus(this)">
                 <span th:text="${task.title}" th:attr="data-task-id=${task.id}" class="task-name"></span>
-                <i class="fas fa-pencil edit-icon" style="padding-inline-end: 100px" onclick="enableEdit(this)"></i>
+                <i class="fas fa-pencil edit-icon" onclick="enableEdit(this)"></i>
             </td>
             <td>
-                <a th:href="@{/delete-task(taskId=${task.id})}" class="btn btn-warning"
-                >Del</a>
+                <a th:href="@{/delete-task(taskId=${task.id})}" class="btn btn-warning">Del</a>
             </td>
         </tr>
         </tbody>
     </table>
-
-    <a th:href="@{/}" style="position: fixed; left:300px; bottom: 40px;">Вернуться</a>
-
 </div>
+
+<a class="back" th:href="@{/}" >Вернуться</a>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.4/datatables.min.js"></script>
 
@@ -61,7 +57,8 @@
         let completed = checkbox.checked;
         let data = {
             id: taskId,
-            completed: completed };
+            completed: completed
+        };
 
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "update-status", true);
@@ -90,6 +87,7 @@
             }
         });
     }
+
     // method for save changes in title
     function saveTitle(taskNameElement) {
         taskNameElement.contentEditable = false;
@@ -99,7 +97,8 @@
 
         let data = {
             id: taskId,
-            title: newTaskName };
+            title: newTaskName
+        };
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "/update-task", true);
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -107,7 +106,9 @@
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log("Изменения сохранены!");
             } else {
-                console.error("Ошибка при сохранении изменений"); } };
+                console.error("Ошибка при сохранении изменений");
+            }
+        };
         xhr.send(JSON.stringify(data));
     }
 
