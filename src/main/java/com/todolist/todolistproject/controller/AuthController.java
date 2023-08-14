@@ -1,7 +1,6 @@
 package com.todolist.todolistproject.controller;
 import com.todolist.todolistproject.DTO.UserDto;
 import com.todolist.todolistproject.model.User;
-import com.todolist.todolistproject.security.JWTUtil;
 import com.todolist.todolistproject.service.RegistrationService;
 import com.todolist.todolistproject.service.UserService;
 import com.todolist.todolistproject.util.UserValidator;
@@ -23,16 +22,15 @@ public class AuthController {
     private final RegistrationService registrationService;
     private final UserValidator userValidator;
     private final ModelMapper modelMapper;
-    private final JWTUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
 
     @Autowired
-    public AuthController(RegistrationService registrationService, UserValidator userValidator, ModelMapper modelMapper, JWTUtil jwtUtil, AuthenticationManager authenticationManager, UserService userService) {
+    public AuthController(RegistrationService registrationService, UserValidator userValidator, ModelMapper modelMapper, AuthenticationManager authenticationManager, UserService userService) {
         this.registrationService = registrationService;
         this.userValidator = userValidator;
         this.modelMapper = modelMapper;
-        this.jwtUtil = jwtUtil;
+//        this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
         this.userService = userService;
     }
@@ -48,7 +46,7 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(user.getUsername(),
                         user.getPassword());
 
-        String token = jwtUtil.generateToken(user.getUsername());
+//        String token = jwtUtil.generateToken(user.getUsername());
         return "redirect:/";
     }
     @GetMapping("/registration")

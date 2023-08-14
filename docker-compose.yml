@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 3221
+      MYSQL_DATABASE: to_do_list
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    restart: unless-stopped
+
+  spring-app:
+    build:
+      context: .
+    ports:
+      - "8070:8070"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/to_do_list
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 3221
+    restart: unless-stopped
+
