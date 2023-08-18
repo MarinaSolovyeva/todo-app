@@ -1,16 +1,13 @@
-Todo-app разработано на Java 17 с использованием Spring Boot.
+ToDo application is developed in Java 17 using Spring Boot.
 
-Приложение предоставляет пользователю функционал по управлению задачами: создать, удалять, редактировать задачи, менять по ним статус.
-Доступ к задачам получает только авторизованный пользователь. Процедура аутентификации и авторизации реализована с использованием Spring Boot. Пароли храняться в БД в хэшированном виде, 
-и после успешной аутентификации пользователю присваивается JWT-токен с продолжительностью 60 мин.
+The application provides the ability to use the task management functionality: create, delete, very task, change their status.
+Only an authorized user can access the task. Implementation authentication and authorization procedure using Spring Boot. Passwords are stored in the database in a hashed form,
+and after successful authentication, the user uses a JWT token with a duration of 60 min.
 
-Используемые в проекте модули и API:
-
-- Spring MVC;
-- Spring Security;
-- Hibernate;
-- Spring Data JPA;
-- Spring Rest;
-- Библиотека Lombok;
-- Thymeleaf;
-- Библиотека Bootstrap.
+## Installation  
+Run the following command to start the application using Docker Compose:    
+```  
+docker-compose up
+```
+Welcome to the application:  
+http://localhost:8070
